@@ -13,26 +13,24 @@ const AddTodoList = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Ensure todoText is a string and not empty
-        if (!todo.todoText.trim()) {
+        if (!todo.todoText) {
             console.error("Todo text is empty");
             return;
         }
 
         try {
             const todoData = {
-                todo: todo.todoText,  // Send the correct field expected by the backend
+                todo: todo.todoText,
                 status: todo.status
             };
 
             await axios.post("http://localhost:8000/api/addTodo",
-                todoData,  // Corrected data structure
-                { headers: { "Content-Type": "application/json" } } // Ensure JSON headers
+                todoData,
             );
 
             console.log("Todo added successfully");
-            setTodo({ todoText: "", status: "Pending" }); // Reset the form
-            navigate("/"); // Redirect after submission
+            setTodo({ todoText: "", status: "Pending" });
+            navigate("/");
         } catch (error) {
             console.error("Error adding task:", error.response ? error.response.data : error);
         }

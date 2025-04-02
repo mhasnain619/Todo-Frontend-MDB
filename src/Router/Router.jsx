@@ -9,7 +9,6 @@ const Router = () => {
             <Routes>
                 <Route path="/" element={<TodoList />} />
                 <Route path="/addnewtask" element={<AddTodoList />} />
-                {/* <Route path="/updateTodo" element={<UpdateList />} /> */}
                 <Route path="/updateTodo/:id" element={<UpdateList />} />
             </Routes>
         </>

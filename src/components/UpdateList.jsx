@@ -19,7 +19,7 @@ const UpdateList = () => {
                 const response = await axios.get(`http://localhost:8000/api/getTodo/${id}`);
                 setTodo({ todoText: response.data.todo, status: response.data.status });
             } catch (error) {
-                console.error("❌ Error fetching todo:", error.response?.data || error.message);
+                console.error("Error fetching todo:", error.response?.data || error.message);
             }
         };
         fetchTodo();
@@ -30,22 +30,22 @@ const UpdateList = () => {
         e.preventDefault();
 
         if (!todo.todoText.trim()) {
-            console.error("❌ Todo text is empty");
+            console.error("Todo text is empty");
             return;
         }
 
         try {
             const todoData = {
-                todo: todo.todoText, // ✅ Match backend field
+                todo: todo.todoText, //  Match backend field
                 status: todo.status
             };
 
             await axios.put(`http://localhost:8000/api/updateTodo/${id}`, todoData, {
                 headers: { "Content-Type": "application/json" }
             });
-            navigate("/"); // Redirect after update
+            navigate("/");
         } catch (error) {
-            console.error("❌ Error updating task:", error);
+            console.error("Error updating task:", error);
         }
     };
 
@@ -55,7 +55,7 @@ const UpdateList = () => {
 
     return (
         <Container className="mt-5 p-4 border rounded shadow-lg" style={{ width: "1000px", background: "#fff" }}>
-            {/* ✅ Corrected Header */}
+            {/*  Corrected Header */}
             <div className="bg-primary text-white text-center py-3 rounded-top">
                 <h2 className="fw-bold">Update Task</h2>
             </div>

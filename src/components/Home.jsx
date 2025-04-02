@@ -18,7 +18,7 @@ const TodoList = () => {
             }
         };
         fetchTodos();
-    }, []); // Run only once when the component mounts
+    }, []);
     const deleteTodo = async (id) => {
         try {
             await axios.delete(`http://localhost:8000/api/deleteTodo/${id}`);
@@ -43,8 +43,8 @@ const TodoList = () => {
             {/* Table */}
             <Table striped bordered hover className="mt-4" style={{ fontSize: "1.2rem" }}>
                 <thead className="bg-light">
-                    <tr style={{ height: "60px" }}>
-                        <th>ID</th>
+                    <tr >
+                        <th>S.N</th>
                         <th>Task</th>
                         <th>Status</th>
                         <th className="text-center">Actions</th>
